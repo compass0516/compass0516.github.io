@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据可视化 - COMPASS的个人知识库</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="shin-chan-nav">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="categories.html">分类</a></li>
+                <li><a href="tags.html">标签</a></li>
+                <li><a href="data-visualization.html" class="active">数据可视化</a></li>
+                <li><a href="about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="welcome">
+            <h1>数据可视化展示</h1>
+        </section>
+
+        <section class="entry-content">
+            <h2>网站访问量统计</h2>
+            <div style="width: 80%; margin: 0 auto;">
+                <canvas id="visitsChart"></canvas>
+            </div>
+
+            <h2>文章分类统计</h2>
+            <div style="width: 50%; margin: 0 auto;">
+                <canvas id="categoriesChart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 COMPASS的个人知识库 | 持续学习，不断成长</p>
+    </footer>
+
+    <script>
+        // 网站访问量统计图表
+        const visitsCtx = document.getElementById('visitsChart').getContext('2d');
+        new Chart(visitsCtx, {
+            type: 'line',
+            data: {
+                labels: ['一月', '二月', '三月', '四月', '五月', '六月'],
+                datasets: [{
+                    label: '月访问量',
+                    data: [1000, 1500, 3000, 2000, 2500, 3000],
+                    borderColor: '#1e90ff',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '近6个月网站访问量趋势'
+                    }
+                }
+            }
+        });
+
+        // 文章分类统计图表
+        const categoriesCtx = document.getElementById('categoriesChart').getContext('2d');
+        new Chart(categoriesCtx, {
+            type: 'pie',
+            data: {
+                labels: ['网络安全', '设计与图像处理', '人工智能', '编程语言', '数据科学', 'Web开发'],
+                datasets: [{
+                    data: [30, 20, 15, 10, 15, 10],
+                    backgroundColor: [
+                        '#1e90ff', '#4169e1', '#00bfff', '#87cefa', '#6495ed', '#4682b4'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '文章分类占比'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+
